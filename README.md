@@ -110,6 +110,42 @@ You are free to use any language or runtime. Python, JavaScript, and TypeScript 
 
 ---
 
+## Approach Overview
+
+Our system combines multi-modal AI to robustly verify damage claims:
+1. **Risk Context:** It first analyzes `user_history.csv` to establish baseline trust and extract risk flags.
+2. **Vision Analysis:** Using state-of-the-art vision models, it inspects the submitted images to identify object types, specific parts, and the severity of the damage.
+3. **Logic & Rule Engine:** It then correlates the chat transcripts with the visual evidence to make a final judgment (`supported`, `contradicted`, or `not_enough_information`).
+
+## Setup Instructions
+
+1. **Install Dependencies:**
+   Navigate into the `code/` directory and install the required packages.
+   ```bash
+   cd code
+   pip install -r requirements.txt
+   ```
+
+2. **Environment Variables:**
+   Ensure your `.env` file is properly configured with your secret API keys (never commit this file!).
+   ```bash
+   # Add necessary keys to code/.env
+   ```
+
+3. **Run the System:**
+   Execute the main script to process `dataset/claims.csv` and generate `output.csv`.
+   ```bash
+   python main.py
+   ```
+
+4. **Run Evaluations:**
+   To test on sample data and compare approaches:
+   ```bash
+   python evaluation/main.py
+   ```
+
+---
+
 ## Evaluation
 
 The evaluation report should include:
